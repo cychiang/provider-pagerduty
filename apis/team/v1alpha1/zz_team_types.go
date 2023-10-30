@@ -15,6 +15,9 @@ import (
 
 type TeamInitParameters struct {
 
+	// The team is private if the value is "none", or public if it is "manager" (the default permissions for a non-member of the team are either "none", or their base role up until "manager").
+	DefaultRole *string `json:"defaultRole,omitempty" tf:"default_role,omitempty"`
+
 	// A human-friendly description of the team.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
@@ -26,6 +29,9 @@ type TeamInitParameters struct {
 }
 
 type TeamObservation struct {
+
+	// The team is private if the value is "none", or public if it is "manager" (the default permissions for a non-member of the team are either "none", or their base role up until "manager").
+	DefaultRole *string `json:"defaultRole,omitempty" tf:"default_role,omitempty"`
 
 	// A human-friendly description of the team.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -44,6 +50,10 @@ type TeamObservation struct {
 }
 
 type TeamParameters struct {
+
+	// The team is private if the value is "none", or public if it is "manager" (the default permissions for a non-member of the team are either "none", or their base role up until "manager").
+	// +kubebuilder:validation:Optional
+	DefaultRole *string `json:"defaultRole,omitempty" tf:"default_role,omitempty"`
 
 	// A human-friendly description of the team.
 	// +kubebuilder:validation:Optional
